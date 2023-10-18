@@ -15,6 +15,8 @@ function urnaEletronica() {
     let totalVotoGanhador = 0;
     let totalPercentualGanhador = 0;
 
+    let confirmacaoEncerramento;
+
     const candidato1 = prompt('Digite o nome do candidato 1');
     const candidato2 = prompt('Digite o nome do candidato 2');
     const candidato3 = prompt('Digite o nome do candidato 3');
@@ -48,6 +50,7 @@ function urnaEletronica() {
         totalVotosNulo++;
         console.log('O voto foi anulado');
        } else if (voto === 0) {
+        confirmacaoEncerramento = prompt('Digite S para Sim ou N para Não');
         console.log('Encerrada a votação');
        } else {
         return;
