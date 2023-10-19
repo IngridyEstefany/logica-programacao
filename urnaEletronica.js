@@ -29,8 +29,7 @@ function urnaEletronica() {
         console.log('|3| ' + candidato3); 
         console.log('|5| Branco');
         console.log('|8| Nulo');
-        console.log('|0| Encerrar a votação');
-    
+            
        voto = parseInt(prompt('Digite sua opção de voto:'));
 
        console.clear(); //limpa o console
@@ -50,9 +49,9 @@ function urnaEletronica() {
        } else if (voto === 8) {
         totalVotosNulo++;
         console.log('O voto foi anulado');
-       } else if (voto === 0) {
+       } else if (voto === 123456) {
         totalVotosValidos--;
-        confirmacaoEncerramento = prompt('Deseja REALMENTE encerrar a votação? Digite S para Sim ou N para Não');
+        confirmacaoEncerramento = prompt('Deseja REALMENTE encerrar a votação? Digite S para Sim ou N para Não').charAt(0).toUpperCase();
 
         if (confirmacaoEncerramento !== 'S' && confirmacaoEncerramento !== 'N') {
             alert('Opção inválida!')
@@ -63,7 +62,7 @@ function urnaEletronica() {
         return;
        }
 
-    } while (confirmacaoEncerramento !== 'S' && confirmacaoEncerramento !== 's');
+    } while (confirmacaoEncerramento !== 'S');
 
     console.log('**BOLETIM DE URNA - RESULTADOS**')
 
