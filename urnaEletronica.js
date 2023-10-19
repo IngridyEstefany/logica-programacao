@@ -16,6 +16,7 @@ function urnaEletronica() {
     let totalPercentualGanhador = 0;
 
     let confirmacaoEncerramento = '';
+    let anulacaoVoto = '';
     let totalVotosValidos = 0;
 
     let senhaMesario;
@@ -34,7 +35,6 @@ function urnaEletronica() {
         console.log('|2| ' + candidato2); 
         console.log('|3| ' + candidato3); 
         console.log('|5| Branco');
-        console.log('|8| Nulo');
             
        voto = parseInt(prompt('Digite sua opção de voto:'));
 
@@ -52,7 +52,7 @@ function urnaEletronica() {
        } else if (voto === 5) {
         totalVotosBranco++;
         console.log('O voto foi em branco');
-       } else if (voto === 8) {
+       } else if (voto === anulacaoVoto) {
         totalVotosNulo++;
         console.log('O voto foi anulado');
        } else if (voto === senhaMesario) {
@@ -60,12 +60,21 @@ function urnaEletronica() {
         confirmacaoEncerramento = prompt('Deseja REALMENTE encerrar a votação? Digite S para Sim ou N para Não').charAt(0).toUpperCase();
 
         if (confirmacaoEncerramento !== 'S' && confirmacaoEncerramento !== 'N') {
-            alert('Opção inválida!')
+            alert('Opção inválida!');
         }
 
         console.log('Encerrada a votação');
        } else {
-        return;
+        anulacaoVoto = alert('Opção inválida. Seu voto será anulado.');
+        confirm = ('SEU VOTO SERÁ ANULADO')
+
+                
+        if (confirm) {
+            totalVotosNulo
+        }
+        
+        
+
        }
 
     } while (confirmacaoEncerramento !== 'S');
