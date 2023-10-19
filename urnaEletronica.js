@@ -16,6 +16,7 @@ function urnaEletronica() {
     let totalPercentualGanhador = 0;
 
     let confirmacaoEncerramento;
+    let totalVotosValidos = 0;
 
     const candidato1 = prompt('Digite o nome do candidato 1');
     const candidato2 = prompt('Digite o nome do candidato 2');
@@ -50,22 +51,29 @@ function urnaEletronica() {
         totalVotosNulo++;
         console.log('O voto foi anulado');
        } else if (voto === 0) {
-        confirmacaoEncerramento = prompt('Digite S para Sim ou N para Não');
+        totalVotosValidos--;
+        confirmacaoEncerramento = prompt('Deseja REALMENTE encerrar a votação? Digite S para Sim ou N para Não');
+
+        if (confirmacaoEncerramento !== 'S' && confirmacaoEncerramento !== 'N') {
+            alert('Opção inválida!')
+        }
+
         console.log('Encerrada a votação');
        } else {
         return;
        }
 
-    } while (voto !== 0);
+    } while (confirmacaoEncerramento !== 'S' && confirmacaoEncerramento !== 's');
 
-    
+    console.log('**BOLETIM DE URNA - RESULTADOS**')
+
     console.log('Total de votos: ' + candidato1 + " " + totalVotosCandidato1);
     console.log('Total de votos: '+ candidato2 + " " + totalVotosCandidato2);
     console.log('Total de votos: '+ candidato3 +  " " + totalVotosCandidato3);
     console.log('Total de votos em branco: ' + totalVotosBranco);
     console.log('Total de votos nulos: ' + totalVotosNulo);
     
-    let totalVotosValidos = totalVotosCandidato1 + totalVotosCandidato2 + totalVotosCandidato3 + totalVotosBranco + totalVotosNulo;
+    totalVotosValidos = totalVotosCandidato1 + totalVotosCandidato2 + totalVotosCandidato3 + totalVotosBranco + totalVotosNulo;
 
     console.log('Percentual de votos: ' + candidato1 +  " " + (totalVotosCandidato1/totalVotosValidos * 100) + '%');
     console.log('Percentual de votos: ' + candidato2 + " " + (totalVotosCandidato2/totalVotosValidos * 100) + '%');
