@@ -15,8 +15,14 @@ function urnaEletronica() {
     let totalVotoGanhador = 0;
     let totalPercentualGanhador = 0;
 
-    let confirmacaoEncerramento;
+    let confirmacaoEncerramento = '';
     let totalVotosValidos = 0;
+
+    let senhaMesario;
+
+
+    console.log('**CONFIGURAÇÃO DA URNA**')
+    senhaMesario = parseInt(prompt('Defina a senha do mesário:'))
 
     const candidato1 = prompt('Digite o nome do candidato 1');
     const candidato2 = prompt('Digite o nome do candidato 2');
@@ -49,7 +55,7 @@ function urnaEletronica() {
        } else if (voto === 8) {
         totalVotosNulo++;
         console.log('O voto foi anulado');
-       } else if (voto === 123456) {
+       } else if (voto === senhaMesario) {
         totalVotosValidos--;
         confirmacaoEncerramento = prompt('Deseja REALMENTE encerrar a votação? Digite S para Sim ou N para Não').charAt(0).toUpperCase();
 
@@ -74,25 +80,25 @@ function urnaEletronica() {
     
     totalVotosValidos = totalVotosCandidato1 + totalVotosCandidato2 + totalVotosCandidato3 + totalVotosBranco + totalVotosNulo;
 
-    console.log('Percentual de votos: ' + candidato1 +  " " + (totalVotosCandidato1/totalVotosValidos * 100) + '%');
-    console.log('Percentual de votos: ' + candidato2 + " " + (totalVotosCandidato2/totalVotosValidos * 100) + '%');
-    console.log('Percentual de votos: '+ candidato3 + " " + (totalVotosCandidato3/totalVotosValidos * 100) + '%');
-    console.log('Percentual de votos em branco: '+ (totalVotosBranco/totalVotosValidos * 100) + '%');
-    console.log('Percentual de votos nulos: '+ (totalVotosNulo/totalVotosValidos * 100) + '%');
+    console.log('Percentual de votos: ' + candidato1 +  " " + (totalVotosCandidato1/totalVotosValidos * 100).toFixed(2) + '%');
+    console.log('Percentual de votos: ' + candidato2 + " " + (totalVotosCandidato2/totalVotosValidos * 100).toFixed(2) + '%');
+    console.log('Percentual de votos: '+ candidato3 + " " + (totalVotosCandidato3/totalVotosValidos * 100).toFixed(2) + '%');
+    console.log('Percentual de votos em branco: '+ (totalVotosBranco/totalVotosValidos * 100).toFixed(2) + '%');
+    console.log('Percentual de votos nulos: '+ (totalVotosNulo/totalVotosValidos * 100).toFixed(2) + '%');
 
     
     if (totalVotosCandidato1 > totalVotosCandidato2 && totalVotosCandidato1 > totalVotosCandidato3) {
         votoGanhador = candidato1;
         totalVotoGanhador = totalVotosCandidato1 + totalVotosBranco;
-        totalPercentualGanhador = (totalVotosCandidato1/totalVotosValidos * 100) + (totalVotosBranco/totalVotosValidos * 100);
+        totalPercentualGanhador = ((totalVotosCandidato1 + totalVotosBranco)/totalVotosValidos * 100).toFixed(2);
     } else if (totalVotosCandidato2 > totalVotosCandidato1 && totalVotosCandidato2 > totalVotosCandidato3) {
         votoGanhador = candidato2;
         totalVotoGanhador = totalVotosCandidato2 + totalVotosBranco;
-        totalPercentualGanhador = (totalVotosCandidato2/totalVotosValidos * 100) + (totalVotosBranco/totalVotosValidos * 100);
+        totalPercentualGanhador = ((totalVotosCandidato2 + totalVotosBranco)/totalVotosValidos * 100).toFixed(2);
     } else if (totalVotosCandidato3 > totalVotosCandidato1 && totalVotosCandidato3 > totalVotosCandidato2) {
         votoGanhador = candidato3;
         totalVotoGanhador = totalVotosCandidato3 + totalVotosBranco;
-        totalPercentualGanhador = (totalVotosCandidato3/totalVotosValidos * 100) + (totalVotosBranco/totalVotosValidos * 100);
+        totalPercentualGanhador = ((totalVotosCandidato3 + totalVotosBranco)/totalVotosValidos * 100).toFixed(2);
     } else {
         votoGanhador = "Não há um ganhador";
     }
