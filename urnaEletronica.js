@@ -16,7 +16,7 @@ function urnaEletronica() {
     let totalPercentualGanhador = 0;
 
     let confirmacaoEncerramento = '';
-    let anulacaoVoto = '';
+    let anulacaoVoto;
     let totalVotosValidos = 0;
 
     let senhaMesario;
@@ -28,6 +28,8 @@ function urnaEletronica() {
     const candidato1 = prompt('Digite o nome do candidato 1');
     const candidato2 = prompt('Digite o nome do candidato 2');
     const candidato3 = prompt('Digite o nome do candidato 3');
+
+
     
     do {
         //instruções
@@ -52,11 +54,7 @@ function urnaEletronica() {
        } else if (voto === 5) {
         totalVotosBranco++;
         console.log('O voto foi em branco');
-       } else if (voto === anulacaoVoto) {
-        totalVotosNulo++;
-        console.log('O voto foi anulado');
        } else if (voto === senhaMesario) {
-        totalVotosValidos--;
         confirmacaoEncerramento = prompt('Deseja REALMENTE encerrar a votação? Digite S para Sim ou N para Não').charAt(0).toUpperCase();
 
         if (confirmacaoEncerramento !== 'S' && confirmacaoEncerramento !== 'N') {
@@ -67,24 +65,25 @@ function urnaEletronica() {
        } else {
         anulacaoVoto = confirm('Opção inválida. SEU VOTO SERÁ ANULADO!');
 
-        if (confirm) {
+        if (anulacaoVoto) {
             totalVotosNulo++
-        }
-        
+        } 
         
        }
 
     } while (confirmacaoEncerramento !== 'S');
 
+    totalVotosValidos = totalVotosCandidato1 + totalVotosCandidato2 + totalVotosCandidato3 + totalVotosBranco + totalVotosNulo;
+    
     console.log('**BOLETIM DE URNA - RESULTADOS**')
 
+    console.log('Total de votos: ' + totalVotosValidos);
     console.log('Total de votos: ' + candidato1 + " " + totalVotosCandidato1);
     console.log('Total de votos: '+ candidato2 + " " + totalVotosCandidato2);
     console.log('Total de votos: '+ candidato3 +  " " + totalVotosCandidato3);
     console.log('Total de votos em branco: ' + totalVotosBranco);
     console.log('Total de votos nulos: ' + totalVotosNulo);
     
-    totalVotosValidos = totalVotosCandidato1 + totalVotosCandidato2 + totalVotosCandidato3 + totalVotosBranco + totalVotosNulo;
 
     console.log('Percentual de votos: ' + candidato1 +  " " + (totalVotosCandidato1/totalVotosValidos * 100).toFixed(2) + '%');
     console.log('Percentual de votos: ' + candidato2 + " " + (totalVotosCandidato2/totalVotosValidos * 100).toFixed(2) + '%');
