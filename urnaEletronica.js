@@ -20,6 +20,7 @@ function urnaEletronica() {
     let totalVotosValidos = 0;
 
     let senhaMesario;
+    let confirmacaoLiberacaoUrna;
 
 
     console.log('**CONFIGURAÇÃO DA URNA**')
@@ -29,7 +30,13 @@ function urnaEletronica() {
     const candidato2 = prompt('Digite o nome do candidato 2');
     const candidato3 = prompt('Digite o nome do candidato 3');
 
+    // confirmacaoLiberacaoUrna = prompt('Confirme o nome dos candidados: ' + candidato1 + ' ' + candidato2 + ' '  + candidato3)
 
+    // if (confirmacaoLiberacaoUrna !== 'S' && confirmacaoEncerramento !== 'N') {
+    //     alert('Opção inválida!');
+    // }
+    
+    // confirm = ('Caso esteja correto, digite "S" para sim, caso contrário digite "N" para não.').charAt(0).toUpperCase();
     
     do {
         //instruções
