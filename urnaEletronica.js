@@ -65,16 +65,13 @@ function urnaEletronica() {
 
         console.log('Encerrada a votação');
        } else {
-        anulacaoVoto = alert('Opção inválida. Seu voto será anulado.');
-        confirm = ('SEU VOTO SERÁ ANULADO')
+        anulacaoVoto = confirm('Opção inválida. SEU VOTO SERÁ ANULADO!');
 
-                
         if (confirm) {
-            totalVotosNulo
+            totalVotosNulo++
         }
         
         
-
        }
 
     } while (confirmacaoEncerramento !== 'S');
