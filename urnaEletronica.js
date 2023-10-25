@@ -26,18 +26,17 @@ function urnaEletronica() {
     console.log('**CONFIGURAÇÃO DA URNA**')
     senhaMesario = parseInt(prompt('Defina a senha do mesário:'))
 
-    const candidato1 = prompt('Digite o nome do candidato 1');
-    const candidato2 = prompt('Digite o nome do candidato 2');
-    const candidato3 = prompt('Digite o nome do candidato 3');
+    do {
+        const candidato1 = prompt('Digite o nome do candidato 1');
+        const candidato2 = prompt('Digite o nome do candidato 2');
+        const candidato3 = prompt('Digite o nome do candidato 3');
 
-    // confirmacaoLiberacaoUrna = prompt('Confirme o nome dos candidados: ' + candidato1 + ' ' + candidato2 + ' '  + candidato3)
+        confirmacaoLiberacaoUrna = confirm ('Confirme o nome dos candidados: ' + candidato1 + ', ' + candidato2 + ', '  + candidato3 + ' Caso esteja correto, clique OK, caso contrário clique CANCELAR.') 
+        
+       
+    } while (!confirmacaoLiberacaoUrna);
 
-    // if (confirmacaoLiberacaoUrna !== 'S' && confirmacaoEncerramento !== 'N') {
-    //     alert('Opção inválida!');
-    // }
-    
-    // confirm = ('Caso esteja correto, digite "S" para sim, caso contrário digite "N" para não.').charAt(0).toUpperCase();
-    
+
     do {
         //instruções
         console.log('|1| ' + candidato1); 
