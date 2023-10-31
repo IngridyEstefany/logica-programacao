@@ -57,6 +57,7 @@ function urnaEletronica() {
 
     let senhaMesario;
     let confirmacaoLiberacaoUrna;
+    let confirmacaoVoto;
 
     let candidato1;
     let candidato2;
@@ -92,17 +93,23 @@ function urnaEletronica() {
        voto = parseInt(prompt('Digite sua opção de voto:'));
 
        console.clear(); //limpa o console
-
+       
        if (voto === 1) {
-        totalVotosCandidato1++; //++ equivale ao totalVotosCandidato1 += 1
-        console.log('O candidato 1 recebeu um voto');
+        //confirmacaoVoto = confirm(`Seu voto está correto?: ${voto}`);
+            //if (confirmacaoVoto) {
+            totalVotosCandidato1++; //++ equivale ao totalVotosCandidato1 += 1
+            console.log('O candidato 1 recebeu um voto'); 
+            } 
        } else if (voto === 2) {
+        //confirmacaoVoto = confirm(`Seu voto está correto?: ${voto}`);
         totalVotosCandidato2++;
         console.log('O candidato 2 recebeu um voto');
-       } else if (voto === 3) {
+    } else if (voto === 3) {
+        //confirmacaoVoto = confirm(`Seu voto está correto?: ${voto}`);
         totalVotosCandidato3++;
         console.log('O candidato 3 recebeu um voto');
        } else if (voto === 5) {
+        //confirmacaoVoto = confirm(`Seu voto está correto?: ${voto}`);
         totalVotosBranco++;
         console.log('O voto foi em branco');
        } else if (voto === senhaMesario) {
@@ -119,8 +126,8 @@ function urnaEletronica() {
         if (anulacaoVoto) {
             totalVotosNulo++
         } 
-        
-       }
+        } 
+    
 
     } while (confirmacaoEncerramento !== 'S');
 
