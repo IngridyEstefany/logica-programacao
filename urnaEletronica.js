@@ -1,3 +1,39 @@
+function verificaUrnaAtual() {
+    fetch('urnaEletronica.js')
+    .then(response => response.text())
+    .then(response => CryptoJS.SHA256(response).toString())
+    .then(hashUrnaAtual => {
+        fetch('hashValido')
+        .then(response => response.text())
+        .then(hashValido => {
+
+            if (hashUrnaAtual === hashValido) {
+                console.log('Urna verificada, código íntegro.')
+            } else {
+                console.log ('URNA ADULTERADA! HASHES NÃO CONFEREM!');
+                console.log (`HASH DA URNA: ${hashUrnaAtual}`);
+                console.log (`HASH ESPERADO: ${hashValido}`);
+            }
+        })
+        
+    })
+    
+}
+
+function dataHora(){
+    const dataD = new Date();
+    const dia = dataD.getDate();
+    const mes = dataD.getMonth() + 1;
+    const ano = dataD.getFullYear();
+    const hora = dataD.getHours();
+    const min = dataD.getMinutes();
+
+    const meses = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
+    
+    return `${hora}:${min} ; em ${dia} de ${meses[mes]} de ${ano}`;
+    
+}
+
 function urnaEletronica() {
     
     //Aqui vai todo o código do programa
@@ -22,44 +58,9 @@ function urnaEletronica() {
     let senhaMesario;
     let confirmacaoLiberacaoUrna;
 
-    
-    function verificaUrnaAtual() {
-        fetch('urnaEletronica.js')
-        .then(response => response.text())
-        .then(response => CryptoJS.SHA256(response).toString())
-        .then(hashUrnaAtual => {
-            fetch('hashValido')
-            .then(response => response.text())
-            .then(hashValido => {
-
-                if (hashUrnaAtual === hashValido) {
-                    console.log('Urna verificada, código íntegro.')
-                } else {
-                    console.log ('URNA ADULTERADA! HASHES NÃO CONFEREM!');
-                    console.log (`HASH DA URNA: ${hasUrnaAual}`);
-                    console.log (`HASH ESPERADO: ${hashvValido}`);
-                }
-            })
-
-        })
-
-    }
-    
-    
-    function dataHora(){
-        const dataD = new Date();
-        const dia = dataD.getDate();
-        const mes = dataD.getMonth() + 1;
-        const ano = dataD.getFullYear();
-        const hora = dataD.getHours();
-        const min = dataD.getMinutes();
-    
-        const meses = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
-        
-        return '${hora} : ${min} ; em ${dia} de ${meses[mes]} de ${ano}';
-        
-    }
-
+    let candidato1;
+    let candidato2;
+    let candidato3;
 
     console.log('**CONFIGURAÇÃO DA URNA**')
     senhaMesario = parseInt(prompt('Defina a senha do mesário:'))
@@ -68,9 +69,9 @@ function urnaEletronica() {
 
 
     do {
-        const candidato1 = prompt('Digite o nome do candidato 1');
-        const candidato2 = prompt('Digite o nome do candidato 2');
-        const candidato3 = prompt('Digite o nome do candidato 3');
+        candidato1 = prompt('Digite o nome do candidato 1');
+        candidato2 = prompt('Digite o nome do candidato 2');
+        candidato3 = prompt('Digite o nome do candidato 3');
 
         confirmacaoLiberacaoUrna = confirm ('Confirme o nome dos candidados: ' + candidato1 + ', ' + candidato2 + ', '  + candidato3 + ' Caso esteja correto, clique OK, caso contrário clique CANCELAR.') 
         
@@ -80,7 +81,7 @@ function urnaEletronica() {
 
     do {
 
-        HoraInicio = dataHora();
+        horaInicio = dataHora();
 
         //instruções
         console.log('|1| ' + candidato1); 
@@ -123,7 +124,6 @@ function urnaEletronica() {
 
     } while (confirmacaoEncerramento !== 'S');
 
-   
 
     totalVotosValidos = totalVotosCandidato1 + totalVotosCandidato2 + totalVotosCandidato3 + totalVotosBranco + totalVotosNulo;
     
